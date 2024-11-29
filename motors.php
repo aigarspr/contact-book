@@ -35,6 +35,7 @@ function storeContact($name, $sname, $nr, $email)
         return "saved";
     }
 }
+//contactu saglabāšana
 
 function getContacts()
 {
@@ -43,6 +44,7 @@ function getContacts()
 
     return $decoded_contacts;
 }
+//contactu iznešana
 
 function deleteContact($contacts, $key)
 {
@@ -56,3 +58,4 @@ function deleteContact($contacts, $key)
         return header("Location: contacts.php");
     }
 }
+//contactu izdzēšana

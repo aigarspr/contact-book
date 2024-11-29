@@ -5,3 +5,11 @@ function ShowConfirmDialog(element) {
 function hideConfirmDialog(element) {
     element.parentElement.style.display = "none";
 }
+
+
+
+function ShowEnablDialog(element) {
+    element.nextElementSibling.style.display = "block";
+
+}
+//validadacijas logu parādīšana un slēpšana

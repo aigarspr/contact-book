@@ -8,6 +8,7 @@ if (isset($_POST['submit'])) {
     }
 }
 ?>
+<!--//php saite un parbaudes-->
 
 <!DOCTYPE html>
 <html lang="en">
@@ -41,11 +42,13 @@ if (isset($_POST['submit'])) {
         <?php
         if ($response == "saved") {
             echo "Saglabāts!";
-        } elseif ($response == "not_saved") {
+        }
+        if ($response == "not_saved") {
             echo "Saglabāt neizdevās!";
         }
         ?>
     </form>
+    <!--//contactu glabāšanas forma-->
 </body>
 
 </html>

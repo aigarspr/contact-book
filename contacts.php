@@ -7,6 +7,7 @@ if (isset($_GET['confirm-deletion'])) {
     $response = deleteContact($contacts, $array_key);
 }
 ?>
+<!--//php saite un parbaudes-->
 
 <!DOCTYPE html>
 <html lang="en">
@@ -24,6 +25,7 @@ if (isset($_GET['confirm-deletion'])) {
         <a href="http://localhost/contact-book/index.php">Jauns Kontakts</a>
         <a href="http://localhost/contact-book/contacts.php">Kontakti</a>
     </header>
+    <!--//nav-->
 
     <h1>Kontakti</h1>
     <div class="kontaktinfo">
@@ -35,11 +37,19 @@ if (isset($_GET['confirm-deletion'])) {
         foreach ($contacts as $key => $value) {
         ?>
             <p>
-                Vārds: <?php echo $value["name"] ?><br>
-                Uzvārds: <?php echo $value["sname"] ?><br>
-                Tālr.nr: <?php echo $value["nr"] ?><br>
-                E-pasts: <?php echo $value["email"] ?><br>
+                Vārds: <input type="text" name="name" value="<?php echo $value["name"] ?>"><br>
+                Uzvārds: <input type="text" name="sname" value="<?php echo $value["sname"] ?>"><br>
+                Tālr.nr: <input type="text" name="nr" value="<?php echo $value["nr"] ?>"><br>
+                E-pasts: <input type="email" name="email" value="<?php echo $value["email"] ?>"><br>
             </p>
+
+            <button onclick="ShowEnablDialog(this)" class="update-button">Rediģēt kontaktu</button>
+            <div class="update">
+                <p>Vai tiešām rediģēt kontaktu?</p>
+                <a href="">Jā</a>
+                <button onclick="hideConfirmDialog(this)" class="cancel">Atcelt</button>
+
+            </div>
 
             <button onclick="ShowConfirmDialog(this)" class="delete-button">Izdzēst Kontaktu</button>
             <div class="confirm-deletion">
@@ -54,9 +64,11 @@ if (isset($_GET['confirm-deletion'])) {
         ?>
 
     </div>
+    <!--//Izvades forma + pogas-->
 
 
     <script src="script.js"></script>
+    <!--//js aktivs-->
 
 </body>
 
