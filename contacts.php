@@ -6,6 +6,12 @@ if (isset($_GET['confirm-deletion'])) {
     $array_key = $_GET['key'];
     $response = deleteContact($contacts, $array_key);
 }
+if (isset($_POST['submit'])) {
+    $response = updateContact($_POST['id'], $_POST['name'], $_POST['sname'], $_POST['nr'], $_POST['email']);
+    if ($response == "saved") {
+        unset($_POST);
+    }
+}
 ?>
 <!--//php saite un parbaudes-->
 
@@ -28,7 +34,8 @@ if (isset($_GET['confirm-deletion'])) {
     <!--//nav-->
 
     <h1>Kontakti</h1>
-    <div class="kontaktinfo">
+
+    <div>
         <p class="kontaktnr">
             <?php echo count($contacts) ?> Ieraksti
         </p>
@@ -36,20 +43,17 @@ if (isset($_GET['confirm-deletion'])) {
         <?php
         foreach ($contacts as $key => $value) {
         ?>
-            <p>
-                Vārds: <input type="text" name="name" value="<?php echo $value["name"] ?>"><br>
-                Uzvārds: <input type="text" name="sname" value="<?php echo $value["sname"] ?>"><br>
-                Tālr.nr: <input type="text" name="nr" value="<?php echo $value["nr"] ?>"><br>
-                E-pasts: <input type="email" name="email" value="<?php echo $value["email"] ?>"><br>
-            </p>
 
-            <button onclick="ShowEnablDialog(this)" class="update-button">Rediģēt kontaktu</button>
-            <div class="update">
-                <p>Vai tiešām rediģēt kontaktu?</p>
-                <a href="">Jā</a>
-                <button onclick="hideConfirmDialog(this)" class="cancel">Atcelt</button>
+            <form action="contacts.php" method="post">
+                <input type="text" name="id" value="<?php echo $value["id"] ?>" hidden>
+                Vārds: <input type="text" name="name" value="<?php echo $value["name"] ?><?php echo @$_POST['name'] ?>"><br>
+                Uzvārds: <input type="text" name="sname" value="<?php echo $value["sname"] ?><?php echo @$_POST['sname'] ?>"><br>
+                Tālr.nr: <input type="text" name="nr" value="<?php echo $value["nr"] ?><?php echo @$_POST['nr'] ?>"><br>
+                E-pasts: <input type="email" name="email" value="<?php echo $value["email"] ?><?php echo @$_POST['email'] ?>"><br>
+                <input type="submit" name="submit" value="Saglabāt izmaiņas">
+            </form>
 
-            </div>
+
 
             <button onclick="ShowConfirmDialog(this)" class="delete-button">Izdzēst Kontaktu</button>
             <div class="confirm-deletion">
@@ -59,6 +63,7 @@ if (isset($_GET['confirm-deletion'])) {
             </div>
 
             <p class="error"><?php echo $response ?></p>
+
         <?php
         }
         ?>

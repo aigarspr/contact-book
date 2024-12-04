@@ -1,35 +1,38 @@
 <?php
 function storeContact($name, $sname, $nr, $email)
 {
+    if (filesize("contacts.json") == 0) {
+        $old_records = array();
+    } else {
+        $old_records = json_decode(file_get_contents("contacts.json"), true);
+    }
+
     $new_contact = [
+        "id" => count($old_records) + 1,
         "name" => $name,
         "sname" => $sname,
         "nr" => $nr,
-        "email" => $email,
-        "stored-on" => date("l d M Y H:i:s")
+        "email" => $email
+
     ];
 
     foreach ($new_contact as $value) {
         if ($value == "") {
-            return "Visiem logiem jābūt aizpildītiem!";
+            return "err";
         }
     }
 
-    $sanitized_contact = array_map(function ($item) {
-        return htmlspecialchars($item);
-    }, $new_contact);
-
     if (filesize("contacts.json") == 0) {
-        $data_to_save = array($sanitized_contact);
+        $data_to_save = array($new_contact);
     } else {
         $old_records = json_decode(file_get_contents("contacts.json"), true);
-        array_push($old_records, $sanitized_contact);
+        array_push($old_records, $new_contact);
         $data_to_save = $old_records;
     }
 
-    $encoded_data = json_encode($data_to_save, JSON_PRETTY_PRINT | JSON_UNESCAPED_UNICODE);
+    $encoded_data = json_encode($data_to_save, JSON_PRETTY_PRINT);
 
-    if (!file_put_contents("contacts.json", $encoded_data, LOCK_EX)) {
+    if (!file_put_contents("contacts.json", $encoded_data)) {
         return "not_saved";
     } else {
         return "saved";
@@ -50,8 +53,8 @@ function deleteContact($contacts, $key)
 {
     unset($contacts[$key]);
 
-    $encoded_data = json_encode($contacts, JSON_PRETTY_PRINT | JSON_UNESCAPED_UNICODE);
-    $response = file_put_contents("contacts.json", $encoded_data, LOCK_EX);
+    $encoded_data = json_encode($contacts, JSON_PRETTY_PRINT);
+    $response = file_put_contents("contacts.json", $encoded_data);
     if (!$response) {
         return "error";
     } else {
@@ -59,3 +62,35 @@ function deleteContact($contacts, $key)
     }
 }
 //contactu izdzēšana
+
+function updateContact($id, $name, $sname, $nr, $email)
+{
+
+    $old_contacts = file_get_contents("contacts.json");
+    $contacts = json_decode($old_contacts, true);
+
+    $renew_contact = [
+        "id" => $id,
+        "name" => $name,
+        "sname" => $sname,
+        "nr" => $nr,
+        "email" => $email
+    ];
+
+    foreach ($contacts as &$contact) {
+        if ($contact['id'] == $renew_contact['id']) {
+            $contact = $renew_contact;
+            break;
+        }
+    }
+
+
+
+    $renew_contact = json_encode($contacts, JSON_PRETTY_PRINT);
+
+    if (!file_put_contents("contacts.json", $renew_contact)) {
+        return "not_saved";
+    } else {
+        return "saved";
+    }
+}

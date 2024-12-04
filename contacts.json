@@ -1,23 +1,37 @@
 [
     {
-        "name": "Aigars",
-        "sname": "Kokins",
-        "nr": "1234567",
-        "email": "ak@ak.com",
-        "stored-on": "Thursday 28 Nov 2024 17:14:47"
-    },
-    {
-        "name": "Aigars",
-        "sname": "Kokins",
-        "nr": "1234567",
-        "email": "ak@ak.com",
-        "stored-on": "Thursday 28 Nov 2024 17:14:59"
-    },
-    {
+        "id": 1,
         "name": "adksfnnk",
         "sname": "kjsadekj",
-        "nr": "128461876",
-        "email": "ai@ai.com",
-        "stored-on": "Friday 29 Nov 2024 12:16:30"
+        "nr": "353525",
+        "email": "ai@ai.com"
+    },
+    {
+        "id": "2",
+        "name": "gugugu",
+        "sname": "asdsdad",
+        "nr": "1215355243532",
+        "email": "ai@ai.com"
+    },
+    {
+        "id": "3",
+        "name": "lalala",
+        "sname": "asdaaf",
+        "nr": "352562626",
+        "email": "ak@ak.com"
+    },
+    {
+        "id": "4",
+        "name": "ukulele",
+        "sname": "labablbalalbla",
+        "nr": "824637529876",
+        "email": "asa@aksfa.com"
+    },
+    {
+        "id": "5",
+        "name": "fgjfjfjfjfjfj",
+        "sname": "dsggsgg",
+        "nr": "35523",
+        "email": "ak@ak.com"
     }
 ]
