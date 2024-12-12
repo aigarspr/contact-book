@@ -30,7 +30,7 @@ function storeContact($name, $sname, $nr, $email)
         $data_to_save = $old_records;
     }
 
-    $encoded_data = json_encode($data_to_save, JSON_PRETTY_PRINT);
+    $encoded_data = json_encode($data_to_save,FILTER_SANITIZE_SPECIAL_CHARS, JSON_PRETTY_PRINT);
 
     if (!file_put_contents("contacts.json", $encoded_data)) {
         return "not_saved";
@@ -53,7 +53,7 @@ function deleteContact($contacts, $key)
 {
     unset($contacts[$key]);
 
-    $encoded_data = json_encode($contacts, JSON_PRETTY_PRINT);
+    $encoded_data = json_encode($contacts, FILTER_SANITIZE_SPECIAL_CHARS, JSON_PRETTY_PRINT);
     $response = file_put_contents("contacts.json", $encoded_data);
     if (!$response) {
         return "error";
@@ -86,7 +86,7 @@ function updateContact($id, $name, $sname, $nr, $email)
 
 
 
-    $renew_contact = json_encode($contacts, JSON_PRETTY_PRINT);
+    $renew_contact = json_encode($contacts,FILTER_SANITIZE_SPECIAL_CHARS, JSON_PRETTY_PRINT);
 
     if (!file_put_contents("contacts.json", $renew_contact)) {
         return "not_saved";
