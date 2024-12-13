@@ -30,13 +30,13 @@ if (isset($_POST['submit'])) {
 
     <form action="<?php echo htmlspecialchars($_SERVER["PHP_SELF"]);?>" method="post">
         <h1>Jauns Kontakts</h1>
-        <label for="">Vārds:</label>
+        <label>Vārds: </label>
         <input type="text" name="name" value="<?php echo htmlspecialchars(@$_POST['name']) ?>" required pattern="^[A-Za-zĀāČčĒēĢģĪīĶķĻļŅņŠšŪūŽž\s\-]+$"><br>
-        <label for="">Uzvārds:</label>
+        <label>Uzvārds: </label>
         <input type="text" name="sname" value="<?php echo htmlspecialchars(@$_POST['sname']) ?>" required pattern="^[A-Za-zĀāČčĒēĢģĪīĶķĻļŅņŠšŪūŽž\s\-]+$"><br>
-        <label for="">Tālrunis:</label>
+        <label>Tālrunis: </label>
         <input type="tel" name="nr" value="<?php echo htmlspecialchars(@$_POST['nr']) ?>"required pattern="(\+\d{1,3}\s?)?\d{1,4}[\s]?\d{1,4}[\s]?\d{1,4}" title="Tālruņa nr. jābūt formātā: +000 00000000"><br>
-        <label for="">e-mail:</label>
+        <label>e-mail: </label>
         <input type="email" name="email" value="<?php echo htmlspecialchars(@$_POST['email']) ?>"required><br>
         <input type="submit" name="submit" value="Saglabāt">
 
