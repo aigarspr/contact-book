@@ -27,8 +27,8 @@ if (isset($_POST['search'])) {
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <link rel="stylesheet" href="styles.css">
     <title>Kontakti</title>
+    <link rel="stylesheet" href="styles.css">
 </head>
 <!--//header-->
 
@@ -45,8 +45,8 @@ if (isset($_POST['search'])) {
         <form  action="<?php echo htmlspecialchars($_SERVER["PHP_SELF"]);?>" method="post">
             <label>Meklēt kontaktos:</label>
             <input type="text" id="kontakti" name="kontakti" required><br>
-            <input type="submit" id="search" name="search" value="Meklēt"><br>
-           
+            <input class="srch" type="submit" id="search" name="search" value="Meklēt"><br>
+        </form>   
             <?php
                 if (!empty($results)) 
                 {
@@ -62,7 +62,7 @@ if (isset($_POST['search'])) {
                         <input type="tel" name="nr" value="<?php echo $result["nr"] ?><?php echo htmlspecialchars(@$_POST['nr']) ?>" pattern="(\+\d{1,3}\s?)?\d{1,4}[\s]?\d{1,4}[\s]?\d{1,4}"><br>
                         <label>E-pasts: </label> 
                         <input type="email" name="email" value="<?php echo $result["email"] ?><?php echo htmlspecialchars(@$_POST['email']) ?>"><br>
-                        <input type="submit" id="submit" name="submit" value="Saglabāt izmaiņas">
+                        <input class="update" type="submit" id="submit" name="submit" value="Saglabāt izmaiņas">
                     </form>
         
         
@@ -84,7 +84,7 @@ if (isset($_POST['search'])) {
               
             ?>
             <br><br>
-        </form>
+        
         <!--//search form-->
         <p class="kontaktnr">
             <?php echo count($contacts) ?> Ieraksti
@@ -104,7 +104,7 @@ if (isset($_POST['search'])) {
                 <input type="tel" name="nr" value="<?php echo $value["nr"] ?><?php echo htmlspecialchars(@$_POST['nr']) ?>" pattern="(\+\d{1,3}\s?)?\d{1,4}[\s]?\d{1,4}[\s]?\d{1,4}"><br>
                 <label>E-pasts: </label> 
                 <input type="email" name="email" value="<?php echo $value["email"] ?><?php echo htmlspecialchars(@$_POST['email']) ?>"><br>
-                <input type="submit" name="submit" value="Saglabāt izmaiņas">
+                <input class="update" type="submit" name="submit" value="Saglabāt izmaiņas">
             </form>
 
 

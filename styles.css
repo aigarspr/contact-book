@@ -1,7 +1,33 @@
+body {
+    display: flex;
+    justify-content: center;
+    font-family: Arial, sans-serif;
+    margin: 0;
+    padding: 0;
+    background-color: aquamarine;
+
+}
+
 .confirm-deletion {
     display: none;
 }
 
 .noResult {
     display: none;
+}
+
+
+/*index ievade*/
+.ievade {
+
+    background-color: rgb(71, 165, 42);
+
+    font-size: 1em;
+    text-align: center;
+    justify-content: center;
+    align-items: center;
+    padding: 300px;
+
+    font-family: Georgia, 'Times New Roman', Times, serif;
+    color: rgba(133, 60, 78, 0.952);
 }
