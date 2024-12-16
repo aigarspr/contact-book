@@ -9,3 +9,8 @@ function ShowConfirmDialog(element) {
 
 //validadacijas logu parādīšana un slēpšana
 
+document.querySelector('[name="search"]').addEventListener('click', function () {
+    var noResult = document.querySelector('.noResult');
+    noResult.style.display = 'block';
+});
+

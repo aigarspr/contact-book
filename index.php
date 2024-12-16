@@ -30,7 +30,7 @@
         <!--//header-->
 
         <form class="ievade" action="<?php echo htmlspecialchars($_SERVER["PHP_SELF"]);?>" method="post">
-            <h1 class="jcont">Jauns Kontakts</h1>
+            <h1>Jauns Kontakts</h1>
             <label>Vārds: </label><br>
             <input type="text" name="name" value="<?php echo htmlspecialchars(@$_POST['name']) ?>" required pattern="^[A-Za-zĀāČčĒēĢģĪīĶķĻļŅņŠšŪūŽž\s\-]+$" ><br>
             <label>Uzvārds: </label><br>
@@ -39,7 +39,7 @@
             <input type="tel" name="nr" value="<?php echo htmlspecialchars(@$_POST['nr']) ?>"required pattern="(\+\d{1,3}\s?)?\d{1,4}[\s]?\d{1,4}[\s]?\d{1,4}" title="Tālruņa nr. jābūt formātā: +000 00000000"><br>
             <label>e-mail: </label><br>
             <input type="email" name="email" value="<?php echo htmlspecialchars(@$_POST['email']) ?>"required><br>
-            <input class="save" type="submit" name="submit" value="Saglabāt">
+            <input class="btn" type="submit" name="submit" value="Saglabāt">
 
             <?php
                 if ($response == "saved") 

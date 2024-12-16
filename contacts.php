@@ -2,7 +2,7 @@
 require "motors.php";
 require "search.php";
 $contacts = getContacts();
-$response = null;
+
 if (isset($_GET['confirm-deletion'])) {
     $array_key = $_GET['key'];
     $response = deleteContact($contacts, $array_key);
@@ -41,11 +41,11 @@ if (isset($_POST['search'])) {
 
     <h1>Kontakti</h1>
 
-    <div>
+    <div class="kontakti">
         <form  action="<?php echo htmlspecialchars($_SERVER["PHP_SELF"]);?>" method="post">
             <label>Meklēt kontaktos:</label>
             <input type="text" id="kontakti" name="kontakti" required><br>
-            <input class="srch" type="submit" id="search" name="search" value="Meklēt"><br>
+            <input class="btn" type="submit" id="search" name="search" value="Meklēt"><br>
         </form>   
             <?php
                 if (!empty($results)) 
@@ -62,62 +62,60 @@ if (isset($_POST['search'])) {
                         <input type="tel" name="nr" value="<?php echo $result["nr"] ?><?php echo htmlspecialchars(@$_POST['nr']) ?>" pattern="(\+\d{1,3}\s?)?\d{1,4}[\s]?\d{1,4}[\s]?\d{1,4}"><br>
                         <label>E-pasts: </label> 
                         <input type="email" name="email" value="<?php echo $result["email"] ?><?php echo htmlspecialchars(@$_POST['email']) ?>"><br>
-                        <input class="update" type="submit" id="submit" name="submit" value="Saglabāt izmaiņas">
+                        <input class="btn" type="submit" id="submit" name="submit" value="Saglabāt izmaiņas">
                     </form>
         
         
         
-                    <button onclick="ShowConfirmDialog(this)" class="delete-button">Izdzēst Kontaktu</button>
+                    <button class="btn" onclick="ShowConfirmDialog(this)" class="delete-button">Izdzēst Kontaktu</button>
                     <div class="confirm-deletion">
                         <p>Vai tiešām dzēst kontaktu?</p>
-                        <a href="contacts.php?confirm-deletion&key=<?php echo $key ?>">Jā</a>
-                        <button onclick="hideConfirmDialog(this)" class="cancel">Atcelt</button>
+                        <a class="deleteBtn" href="contacts.php?confirm-deletion&key=<?php echo $key ?>">Jā</a>
+                        <button class="btn" onclick="hideConfirmDialog(this)" class="cancel">Atcelt</button>
                     </div>
         
-                    <p class="error"><?php echo $response ?></p><?php
+                    <?php
                     }
                 }else{
                     ?>
                     <p class="noResult"> Meklēšanas rezultāti netika atrasti</p>
                     <?php
                 }
-              
-            ?>
+               ?>
             <br><br>
-        
+            
         <!--//search form-->
         <p class="kontaktnr">
             <?php echo count($contacts) ?> Ieraksti
         </p>
-
         <?php
         foreach ($contacts as $key => $value) {
         ?>
 
-            <form action="<?php echo htmlspecialchars($_SERVER["PHP_SELF"]);?>" method="post">
-                <input type="text" name="id" value="<?php echo $value["id"] ?>" hidden>
-                <label>Vārds: </label> 
-                <input type="text" name="name" value="<?php echo $value["name"] ?><?php echo htmlspecialchars(@$_POST['name']) ?>" pattern="^[A-Za-zĀāČčĒēĢģĪīĶķĻļŅņŠšŪūŽž\s\-]+$"><br>
-                <label>Uzvārds: </label> 
-                <input type="text" name="sname" value="<?php echo $value["sname"] ?><?php echo htmlspecialchars(@$_POST['sname']) ?>" pattern="^[A-Za-zĀāČčĒēĢģĪīĶķĻļŅņŠšŪūŽž\s\-]+$"><br>
-                <label>Tālr.nr: </label> 
-                <input type="tel" name="nr" value="<?php echo $value["nr"] ?><?php echo htmlspecialchars(@$_POST['nr']) ?>" pattern="(\+\d{1,3}\s?)?\d{1,4}[\s]?\d{1,4}[\s]?\d{1,4}"><br>
-                <label>E-pasts: </label> 
-                <input type="email" name="email" value="<?php echo $value["email"] ?><?php echo htmlspecialchars(@$_POST['email']) ?>"><br>
-                <input class="update" type="submit" name="submit" value="Saglabāt izmaiņas">
-            </form>
+                <form class="contactRes"  action="<?php echo htmlspecialchars($_SERVER["PHP_SELF"]);?>" method="post">
+                    <input type="text" name="id" value="<?php echo $value["id"] ?>" hidden>
+                    <label>Vārds: </label> 
+                    <input type="text" name="name" value="<?php echo $value["name"] ?><?php echo htmlspecialchars(@$_POST['name']) ?>" pattern="^[A-Za-zĀāČčĒēĢģĪīĶķĻļŅņŠšŪūŽž\s\-]+$"><br>
+                    <label>Uzvārds: </label> 
+                    <input type="text" name="sname" value="<?php echo $value["sname"] ?><?php echo htmlspecialchars(@$_POST['sname']) ?>" pattern="^[A-Za-zĀāČčĒēĢģĪīĶķĻļŅņŠšŪūŽž\s\-]+$"><br>
+                    <label>Tālr.nr: </label> 
+                    <input type="tel" name="nr" value="<?php echo $value["nr"] ?><?php echo htmlspecialchars(@$_POST['nr']) ?>" pattern="(\+\d{1,3}\s?)?\d{1,4}[\s]?\d{1,4}[\s]?\d{1,4}"><br>
+                    <label>E-pasts: </label> 
+                    <input type="email" name="email" value="<?php echo $value["email"] ?><?php echo htmlspecialchars(@$_POST['email']) ?>"><br>
+                    <input class="btn" type="submit" name="submit" value="Saglabāt izmaiņas">
+                </form>
 
 
 
-            <button onclick="ShowConfirmDialog(this)" class="delete-button">Izdzēst Kontaktu</button>
-            <div class="confirm-deletion">
-                <p>Vai tiešām dzēst kontaktu?</p>
-                <a href="contacts.php?confirm-deletion&key=<?php echo $key ?>">Jā</a>
-                <button onclick="hideConfirmDialog(this)" class="cancel">Atcelt</button>
-            </div>
+                <button class="btn" onclick="ShowConfirmDialog(this)" class="delete-button">Izdzēst Kontaktu</button>
+                <div class="confirm-deletion">
+                    <p>Vai tiešām dzēst kontaktu?</p>
+                    <a class="deleteBtn" href="contacts.php?confirm-deletion&key=<?php echo $key ?>">Jā</a>
+                    <button class="btn" onclick="hideConfirmDialog(this)" class="cancel">Atcelt</button>
+                </div>
 
-            <p class="error"><?php echo $response ?></p>
-
+                
+          
         <?php
         }
         ?>

@@ -1,11 +1,19 @@
 body {
     display: flex;
     justify-content: center;
-    font-family: Arial, sans-serif;
-    margin: 0;
-    padding: 0;
-    background-color: aquamarine;
+    flex-direction: column;
+    align-items: center;
+    background-color: lightgreen;
+    padding: 200px;
 
+}
+
+header {
+    display: flex;
+    justify-content: center;
+    gap: 10px;
+
+    padding: 10px;
 }
 
 .confirm-deletion {
@@ -16,18 +24,70 @@ body {
     display: none;
 }
 
-
-/*index ievade*/
 .ievade {
-
-    background-color: rgb(71, 165, 42);
-
-    font-size: 1em;
+    padding: 100px;
+    margin: 5px;
+    border-radius: 5px;
     text-align: center;
-    justify-content: center;
-    align-items: center;
-    padding: 300px;
+    font-size: 2em;
+}
 
+a {
+    display: inline-block;
+    padding: 50px 200px;
+    background-color: #555758;
+    color: rgb(17, 7, 7);
+    text-align: center;
+    text-decoration: none;
+    border-radius: 5px;
+    border: 1px solid #555758;
+    font-size: 1em;
+}
+
+.btn {
+    display: inline-block;
+    padding: 10px 20px;
+    background-color: #b4daec;
+    color: rgb(17, 7, 7);
+    text-align: center;
+    border-radius: 5px;
+    border: 1px solid #555758;
+    font-size: 1em;
+    margin-top: 10px;
+}
+
+.kontakti {
+    padding: 200px;
+    margin: 10px;
+    border-radius: 5px;
+    text-align: center;
+    font-size: 2em;
+}
+
+input {
+    font-size: 1em;
+    padding: 15px 20px;
+    height: 50px;
+    width: 300px;
+    border: 3px solid black;
+    border-radius: 5px;
+    box-sizing: border-box;
+}
+
+h1 {
+    font-size: 3em;
     font-family: Georgia, 'Times New Roman', Times, serif;
-    color: rgba(133, 60, 78, 0.952);
+}
+
+.deleteBtn {
+    display: inline-block;
+    padding: 10px 20px;
+    background-color: #b4daec;
+    color: rgb(17, 7, 7);
+    text-align: center;
+    border-radius: 5px;
+    text-decoration: none;
+    border: 1px solid #555758;
+    font-size: 1em;
+    margin-top: 10px;
 }
